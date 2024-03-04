@@ -3,7 +3,39 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="./assets/css/style.css" />
 		<title>Document</title>
 	</head>
-	<body></body>
+	<body>
+		<header>
+			<h1>Weather Dashboard</h1>
+		</header>
+		<main>
+			<section class="search-city">
+				<form action="">
+					<label for="city">Search for a City:</label>
+					<input type="text" id="city" name="city" />
+					<input type="submit" value="Search" />
+				</form>
+			</section>
+			<section class="city-weather">
+				<section class="current-weather">
+					<h2>Atlanta (9/13/2022)</h2>
+					<p>Temp: 98</p>
+					<p>Wind: 8.43 MPH</p>
+					<p>Humidity: 44%</p>
+				</section>
+				<section class="five-day-forecast">
+					<h3>5-Day Forecast:</h3>
+					<div class="forecast-cards">
+						<div>1</div>
+						<div>2</div>
+						<div>3</div>
+						<div>4</div>
+						<div>5</div>
+					</div>
+				</section>
+			</section>
+		</main>
+	</body>
 </html>

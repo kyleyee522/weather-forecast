@@ -1,0 +1,42 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+header {
+	text-align: center;
+}
+
+main {
+	display: flex;
+}
+
+.search-city {
+	width: 400px;
+	margin-right: 20px;
+}
+
+.search-city form {
+	display: flex;
+	flex-direction: column;
+}
+
+.city-weather {
+	margin-left: 20px;
+	flex-grow: 0.9;
+}
+
+.current-weather {
+	border: 2px solid black;
+	margin-bottom: 10px;
+}
+
+.five-day-forecast {
+	border: 2px solid black;
+	/* margin-top: 10px; */
+}
+
+.forecast-cards {
+	display: flex;
+	justify-content: space-between;
+}
