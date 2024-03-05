@@ -6,6 +6,8 @@
 
 * This project was created to get hands on practice will fetching third-party APIs. In this project, I specifically used a weather API that gave the weather of cities for the current day and a five day forecast for that city. By fetching data from this API, it helped me get hands-on practice extracting pertinent data in JSON format.
 
+* To view this website, you may clone this repo or visit: https://kyleyee522.github.io/weather-forecast/
+
 ## Assets
 
 The image below is the Weather Forecast website landing page:
