@@ -11,4 +11,5 @@
 The image below is the Weather Forecast website landing page:
 ![](./assets/images/weather-forecast.png)
 
+Below is what the page looks like when a user enters a city:
 ![](./assets/images/weather-forecast%202.png)
