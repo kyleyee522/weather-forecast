@@ -3,6 +3,11 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script
+			src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
+			integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U="
+			crossorigin="anonymous"
+		></script>
 		<link rel="stylesheet" href="./assets/css/style.css" />
 		<title>Document</title>
 	</head>
@@ -12,30 +17,32 @@
 		</header>
 		<main>
 			<section class="search-city">
-				<form action="">
+				<form action="" id="search-city">
 					<label for="city">Search for a City:</label>
-					<input type="text" id="city" name="city" />
-					<input type="submit" value="Search" />
+					<input type="text" id="city-input" name="city" />
+					<button type="submit">Submit</button>
 				</form>
 			</section>
 			<section class="city-weather">
 				<section class="current-weather">
-					<h2>Atlanta (9/13/2022)</h2>
-					<p>Temp: 98</p>
-					<p>Wind: 8.43 MPH</p>
-					<p>Humidity: 44%</p>
+					<!-- <h2 id="place-date"></h2>
+					<span><img id="weather-icon" /></span> -->
+					<!-- <p id="today-temp"></p>
+					<p id="today-wind"></p>
+					<p id="today-humidity"></p> -->
 				</section>
 				<section class="five-day-forecast">
 					<h3>5-Day Forecast:</h3>
-					<div class="forecast-cards">
-						<div>1</div>
-						<div>2</div>
-						<div>3</div>
-						<div>4</div>
-						<div>5</div>
+					<div class="forecast-cards-container">
+						<!-- <div class="forecast-card">1</div>
+						<div class="forecast-card">2</div>
+						<div class="forecast-card">3</div>
+						<div class="forecast-card">4</div>
+						<div class="forecast-card">5</div> -->
 					</div>
 				</section>
 			</section>
 		</main>
+		<script src="./assets/js/script.js"></script>
 	</body>
 </html>
