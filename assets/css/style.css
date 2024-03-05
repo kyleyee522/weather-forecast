@@ -6,6 +6,11 @@
 
 header {
 	text-align: center;
+	background: linear-gradient(rgb(66, 66, 255), rgb(255, 66, 66));
+	color: white;
+	padding: 20px;
+	margin-bottom: 30px;
+	font-size: 32px;
 }
 
 main {
@@ -15,6 +20,7 @@ main {
 .search-city {
 	width: 400px;
 	margin-right: 20px;
+	margin-left: 20px;
 }
 
 .search-city form {
@@ -22,9 +28,48 @@ main {
 	flex-direction: column;
 }
 
+.search-city form label {
+	font-size: 40px;
+	font-weight: bolder;
+}
+
+.search-city form input {
+	font-size: 28px;
+	padding: 5px;
+	border-radius: 5px;
+	margin-bottom: 20px;
+}
+
+.search-city form button {
+	padding: 10px;
+	border: 0px solid;
+	border-radius: 10px;
+	background-color: #6991e3;
+	margin-bottom: 20px;
+	/* border-bottom: 1px solid gray; */
+}
+
+.search-city form button:hover,
+.history-button:hover {
+	cursor: pointer;
+}
+
+#search-history {
+	list-style: none;
+}
+
+.history-button {
+	padding: 10px;
+	border: 0px solid;
+	border-radius: 10px;
+	width: 100%;
+	background-color: gray;
+	margin-top: 20px;
+}
+
 .city-weather {
 	margin-left: 20px;
-	flex-grow: 0.9;
+	flex-grow: 0.6;
 }
 
 .current-weather {
@@ -39,6 +84,8 @@ main {
 
 .current-weather p {
 	padding-top: 10px;
+	font-weight: bold;
+	font-size: 24px;
 }
 
 .five-day-forecast {
@@ -46,9 +93,10 @@ main {
 	/* margin-top: 10px; */
 }
 
-/* .five-day-forecast h3 {
-	margin-bottom: 20px;
-} */
+.five-day-forecast h2 {
+	/* margin-bottom: 20px; */
+	font-size: 32px;
+}
 
 .forecast-cards-container {
 	display: flex;
@@ -58,8 +106,18 @@ main {
 }
 
 .forecast-card {
+	display: flex;
 	width: 200px;
-	height: 250px;
-	background-color: aqua;
+	height: 300px;
+	background-color: #323d4f;
 	margin-top: 10px;
+	color: white;
+	flex-direction: column;
+	justify-content: space-between;
+	padding: 10px;
+}
+
+.forecast-card img {
+	width: 50px;
+	height: 50px;
 }

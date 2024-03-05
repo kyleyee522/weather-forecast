@@ -1,63 +1,16 @@
 // API Key: 453394794dcaa724188e30117e94e066
 // API For Today: https://api.openweathermap.org/data/2.5/weather?q=London&appid=453394794dcaa724188e30117e94e066
 // API 5 day forecast: https://api.openweathermap.org/data/2.5/forecast?q=London&appid=453394794dcaa724188e30117e94e066
-// const todayPlaceEl = document.querySelector('#place-date');
-// const todayTempEl = document.querySelector('#today-temp');
-// const todayWindEl = document.querySelector('#today-wind');
-// const todayHumidityEl = document.querySelector('#today-humidity');
+
 const forecastCardsEl = document.querySelector('.forecast-cards-container');
 const weatherIconEl = document.querySelector('#weather-icon');
 const currentWeatherEl = document.querySelector('.current-weather');
 const searchCityEl = document.querySelector('#search-city');
 const cityInput = document.querySelector('#city-input');
 const apiKey = '453394794dcaa724188e30117e94e066';
-// const previousSearches = document.querySelector('#search-history');
 const previousSearches = $('#search-history');
-// const historyButton = document.querySelector('.history-button');
+
 localStorage.clear();
-// const test = document.querySelector('#test');
-// const city = 'san diego';
-// const todayWeather = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
-// const todayForecast = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=imperial`;
-// const weatherIcon = `https://openweathermap.org/img/wn/10d.png`;
-
-// fetch(todayWeather)
-// 	.then(function (response) {
-// 		return response.json();
-// 	})
-// 	.then(function (data) {
-// 		// console.log(data);
-// 		const cityName = data.name;
-// 		const todayTemp = data.main.temp;
-// 		const todayWind = data.wind.speed;
-// 		const todayHumidity = data.main.humidity;
-// 	});
-
-// fetch(todayForecast)
-// 	.then(function (response) {
-// 		return response.json();
-// 	})
-// 	.then(function (data) {
-// 		for (let i = 0; i < data.list.length; i++) {
-// 			if (i === 0 || i === 8 || i === 16 || i === 24 || i === 32) {
-// 				console.log(data.list[i]);
-// 			}
-// 		}
-// 	});
-
-// function addTodayToLocalStorage(data) {
-// 	// console.log(data);
-// 	const today = {
-// 		city: data.name,
-// 		date: data.dt,
-// 		temp: data.main.temp,
-// 		wind: data.wind.speed,
-// 		humidity: data.main.humidity,
-// 		icon: data.weather[0].icon,
-// 	};
-// 	localStorage.setItem('today', JSON.stringify(today));
-// 	postTodayWeather();
-// }
 
 function getTodayWeather(city) {
 	// event.preventDefault();
@@ -73,7 +26,6 @@ function getTodayWeather(city) {
 		})
 		.then(function (data) {
 			postTodayWeather(data);
-			// addTodayToLocalStorage(data);
 			searchHistory(data);
 		});
 
