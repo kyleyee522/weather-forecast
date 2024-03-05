@@ -10,8 +10,12 @@ const weatherIconEl = document.querySelector('#weather-icon');
 const currentWeatherEl = document.querySelector('.current-weather');
 const searchCityEl = document.querySelector('#search-city');
 const cityInput = document.querySelector('#city-input');
-
 const apiKey = '453394794dcaa724188e30117e94e066';
+// const previousSearches = document.querySelector('#search-history');
+const previousSearches = $('#search-history');
+// const historyButton = document.querySelector('.history-button');
+localStorage.clear();
+// const test = document.querySelector('#test');
 // const city = 'san diego';
 // const todayWeather = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
 // const todayForecast = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=imperial`;
@@ -41,7 +45,26 @@ const apiKey = '453394794dcaa724188e30117e94e066';
 // 		}
 // 	});
 
+// function addTodayToLocalStorage(data) {
+// 	// console.log(data);
+// 	const today = {
+// 		city: data.name,
+// 		date: data.dt,
+// 		temp: data.main.temp,
+// 		wind: data.wind.speed,
+// 		humidity: data.main.humidity,
+// 		icon: data.weather[0].icon,
+// 	};
+// 	localStorage.setItem('today', JSON.stringify(today));
+// 	postTodayWeather();
+// }
+
 function getTodayWeather(city) {
+	// event.preventDefault();
+
+	const todayWeather = $('.current-weather');
+	todayWeather.empty();
+
 	fetch(
 		`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`
 	)
@@ -49,29 +72,17 @@ function getTodayWeather(city) {
 			return response.json();
 		})
 		.then(function (data) {
-			console.log(data);
-			// const cityName = data.name;
-			// const todayDate = dayjs.unix(data.dt).format('M/D/YYYY');
-			// const todayTemp = data.main.temp;
-			// const todayWind = data.wind.speed;
-			// const todayHumidity = data.main.humidity;
-			// const todayWeatherIcon = `https://openweathermap.org/img/wn/${data.weather[0].icon}.png`;
-			// todayDate = dayjs.unix(1709607600).format('M/D/YYYY');
-			postTodayWeather(
-				// cityName,
-				// todayWeatherIcon,
-				// todayDate,
-				// todayTemp,
-				// todayWind,
-				// todayHumidity
-				data
-			);
+			postTodayWeather(data);
+			// addTodayToLocalStorage(data);
+			searchHistory(data);
 		});
 
 	getTodayForecast(city);
 }
 
 function getTodayForecast(city) {
+	const forecastWeather = $('.forecast-cards-container');
+	forecastWeather.empty();
 	fetch(
 		`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=imperial`
 	)
@@ -80,15 +91,13 @@ function getTodayForecast(city) {
 		})
 		.then(function (data) {
 			// console.log(data.list[0]);
-			// postTodayForecast(data.list[0]);
-			// console.log(dayjs.unix(1709618400).format('M/D/YYYY'));
 			for (let i = 0; i < data.list.length; i++) {
 				// These are 24 hours intervals from the first index
 				if (i === 0 || i === 8 || i === 16 || i === 24 || i === 32) {
-					// console.log(data.list[i]);
 					postTodayForecast(data.list[i]);
 				}
 			}
+			showHistory();
 		});
 }
 
@@ -119,7 +128,6 @@ function postTodayWeather(data) {
 }
 
 function postTodayForecast(data) {
-	// console.log(data);
 	const forecastCard = document.createElement('div');
 	forecastCard.setAttribute('class', 'forecast-card');
 
@@ -137,7 +145,7 @@ function postTodayForecast(data) {
 	forecastCard.appendChild(forecastIcon);
 
 	const forecastTemp = document.createElement('p');
-	// forecastTemp.textContent = `Temp: ${data.main.temp}`;
+
 	forecastTemp.innerHTML = `Temp: ${data.main.temp} &degF`;
 	forecastCard.appendChild(forecastTemp);
 
@@ -151,6 +159,49 @@ function postTodayForecast(data) {
 
 	forecastCardsEl.appendChild(forecastCard);
 }
+
+function searchHistory(data) {
+	// console.log(data);
+	let cities = JSON.parse(localStorage.getItem('searches'));
+	if (cities === null) {
+		cities = [];
+	}
+	const city = data.name;
+	if (cities.includes(city) === false) {
+		cities.push(city);
+	}
+
+	localStorage.setItem('searches', JSON.stringify(cities));
+}
+
+function showHistory() {
+	const history = $('#search-history');
+	history.empty();
+
+	let cities = JSON.parse(localStorage.getItem('searches'));
+	if (cities === null) {
+		cities = [];
+	}
+
+	for (let i = 0; i < cities.length; i++) {
+		createListHistory(cities[i]);
+	}
+}
+
+function createListHistory(city) {
+	const listEl = document.createElement('li');
+	const buttonEl = document.createElement('button');
+
+	buttonEl.textContent = city;
+	buttonEl.setAttribute('class', 'history-button');
+	listEl.appendChild(buttonEl);
+	previousSearches.append(listEl);
+}
+
+previousSearches.on('click', '.history-button', function () {
+	const cityButton = this.innerHTML;
+	getTodayWeather(cityButton);
+});
 
 searchCityEl.addEventListener('submit', function (event) {
 	event.preventDefault();
