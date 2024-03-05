@@ -88,11 +88,6 @@ main {
 	font-size: 24px;
 }
 
-.five-day-forecast {
-	border: 2px solid black;
-	/* margin-top: 10px; */
-}
-
 .five-day-forecast h2 {
 	/* margin-bottom: 20px; */
 	font-size: 32px;
